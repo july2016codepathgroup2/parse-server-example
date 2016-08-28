@@ -6,7 +6,7 @@ Parse.Cloud.define('hello', function(req, res) {
 
 Parse.Cloud.afterDelete("Task", function(request) {
   	query = new Parse.Query("Conversation");
-  	query.equalTo("task", request.object.id);
+  	query.equalTo("task", request.object);
   	query.find({
     	success: function(conversations) {
         	Parse.Cloud.useMasterKey();
