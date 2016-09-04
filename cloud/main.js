@@ -66,18 +66,18 @@ Parse.Cloud.define('pushBidReceived', function(request, response) {
   // extract out the channel to send
   var action = params.action;
   var message = params.message;
-  var postOwner = params.postOwner;
+  var postOwnerId = params.postOwnerId;
 //   var bidder = params.candidate;
 //   var bidPrice = params.bidPrice;
 
   // use to custom tweak whatever payload you wish to send
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.whereEqualTo("userObjectId", postOwner);
+  pushQuery.whereEqualTo("userObjectId", postOwnerId);
   pushQuery.equalTo("deviceType", "android");
 
   var payload = {"data": {
       "alert": message,
-      "action": action
+      "action": action }
                 };
 
   // Note that useMasterKey is necessary for Push notifications to succeed.
