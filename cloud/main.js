@@ -72,7 +72,7 @@ Parse.Cloud.define('pushBidReceived', function(request, response) {
 
   // use to custom tweak whatever payload you wish to send
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.whereEqualTo("userObjectId", postOwnerId);
+  pushQuery.equalTo("userObjectId", postOwnerId);
   pushQuery.equalTo("deviceType", "android");
 
   var payload = {"data": {
