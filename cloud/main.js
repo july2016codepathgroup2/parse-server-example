@@ -65,6 +65,9 @@ Parse.Cloud.define('pushBidReceived', function(request, response) {
 
   // extract out the channel to send
   var action = params.action;
+
+	console.log("action = " + action);
+
   var message = params.message;
   var postOwnerId = params.postOwnerId;
 //   var bidder = params.candidate;
