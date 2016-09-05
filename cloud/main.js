@@ -52,11 +52,12 @@ Parse.Cloud.define('pushChannelTest', function(request, response) {
 	data: payload
   }, { success: function() {
      console.log("#### PUSH OK");
+       response.success('success');
   }, error: function(error) {
      console.log("#### PUSH ERROR" + error.message);
+     response.error(error.message);
   }, useMasterKey: true});
 
-  response.success('success');
 });
 
 Parse.Cloud.define('pushBidReceived', function(request, response) {
@@ -90,9 +91,10 @@ Parse.Cloud.define('pushBidReceived', function(request, response) {
   data: payload
   }, { success: function() {
      console.log("#### PUSH OK");
+     response.success('success');
   }, error: function(error) {
      console.log("#### PUSH ERROR" + error.message);
+     response.error(error.message);
   }, useMasterKey: true});
 
-  response.success('success');
 });
