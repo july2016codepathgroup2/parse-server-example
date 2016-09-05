@@ -88,7 +88,7 @@ Parse.Cloud.define('pushBidReceived', function(request, response) {
 
   Parse.Push.send({
   where: pushQuery      // for sending to a specific channel  
-  data: payload,
+  data: payload
   }, { success: function() {
      console.log("#### PUSH OK");
   }, error: function(error) {
