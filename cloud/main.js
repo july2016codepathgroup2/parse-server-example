@@ -86,27 +86,17 @@ Parse.Cloud.define('pushBidReceived', function(request, response) {
 
   // Note that useMasterKey is necessary for Push notifications to succeed.
 
-Parse.Push.send({
-    where: pushQuery,
+  Parse.Push.send({
+      where: pushQuery,
     data: {
       alert: message
     }
-  }).then(function() {
-      response.success("Push was sent successfully.")
-  }, function(error) {
-      response.error("Push failed to send with error: " + error.message);
+  }, { success: function() {
+     console.log("#### PUSH OK");
+     response.success('success');
+  }, error: function(error) {
+     console.log("#### PUSH ERROR" + error.message);
+     response.error(error.message);
   }, useMasterKey: true});
-
-
- //  Parse.Push.send({
-//   where: pushQuery,      // for sending to a specific channel  
-//   data: payload
-//   }, { success: function() {
-//      console.log("#### PUSH OK");
-//      response.success('success');
-//   }, error: function(error) {
-//      console.log("#### PUSH ERROR" + error.message);
-//      response.error(error.message);
-//   }, useMasterKey: true});
 
 });
