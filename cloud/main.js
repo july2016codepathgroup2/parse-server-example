@@ -49,7 +49,6 @@ Parse.Cloud.define('pushChannelTest', function(request, response) {
 Parse.Push.send({
     where: pushQuery,
     data: {
-        aps: {
             alert: "Test",
             sound: ""
         }
